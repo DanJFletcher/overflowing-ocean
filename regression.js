@@ -24,6 +24,12 @@
     code: "<style>.info: { width: 70%; height: 200px; }</style><div class='info'></div>",
     steps: ["Hm, why is there a colon after the class name in your CSS selector?"]
 },
+
+{
+    code: "<style>.info {} .pic {}</style><div class='info'></div>",
+    steps: ["For this step, you should style the div with a class of '`info`' - not the image."]
+},
+
 {
     code: "<style>.pic { width: 60%;} .info { overflow: scroll; width: 70%; height: 200px; }</style><div class='info'></div>",
     steps: ["pass", "It's better to use the `auto` value, because then it will only show scrollbars when necessary, not all the time.", "Is the image 70% wide, like the div?"]
@@ -56,4 +62,7 @@
 }
 
 
-]
+
+
+
+]  
