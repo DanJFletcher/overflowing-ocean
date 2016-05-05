@@ -1,4 +1,4 @@
-// ------------------------------ MESSAGES
+// ------------------------------ MESSAGES -------------------------------------
 // ------------ STEP 1
 var widthHeightValsM = "Is the div 70% wide and 200 pixels tall?",
     colonAfterInfoM = "Hm, why is there a colon after the class name in your CSS selector?",
@@ -6,10 +6,17 @@ var widthHeightValsM = "Is the div 70% wide and 200 pixels tall?",
     idSelectorM = "Check your CSS selector- that's not quite how you select based on a class name.",
     divSelectorM = "That's a really general CSS selector, can you be more specific by selecting based on the class name?",
     divHasClassM = "Hm, did you remove the 'info' class from the div?";
+    
+    
+// ----------- STEP 2
+var usedScrollValueM = "It's better to use the `auto` value, because then it will only show scrollbars when necessary, not all the time.";
 
 
-// ------------------------------- STEP 1
+
+
+// ------------------------------- STEP 1 --------------------------------------
 // ======================================
+
 staticTest($._("Resize the div"), function() {
     var result = null;
     var descrip = $._("This webpage describes the ocean, with an image and a few paragraphs inside a `<*div*>`. In this first step, style the `<*div*>` so that it takes up 70% of the width and is 200px tall.");
@@ -64,8 +71,12 @@ staticTest($._("Resize the div"), function() {
 });
 
 
-// ------------------------------- STEP 2
+
+
+
+// ------------------------------- STEP 2 --------------------------------------
 // ======================================
+
 staticTest($._("Make it scroll"), function() {
     var result = null;
     var descrip = $._("Now, make it so the div cuts off the overflowing text and presents a scrollbar instead.");
@@ -80,7 +91,7 @@ staticTest($._("Make it scroll"), function() {
         result = pass();
     } else {
         if (cssMatches(usedScrollValueP) || cssMatches(usedScrollValue2P)) {
-            result = fail($._("It's better to use the `auto` value, because then it will only show scrollbars when necessary, not all the time."));
+            result = fail($._(usedScrollValueM));
         } else {
             result = fail();
         }
@@ -89,8 +100,9 @@ staticTest($._("Make it scroll"), function() {
 });
 
 
-// ------------------------------- STEP 3
+// ------------------------------- STEP 3 --------------------------------------
 // ======================================
+
 staticTest($._("Resize the img"), function() {
     var result = null;
     var descrip = $._("In this second step, resize the image so that it takes up the same width as the text.");
