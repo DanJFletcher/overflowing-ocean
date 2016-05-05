@@ -1,3 +1,15 @@
+// ------------------------------ MESSAGES
+// ------------ STEP 1
+var widthHeightValsM = "Is the div 70% wide and 200 pixels tall?",
+    colonAfterInfoM = "Hm, why is there a colon after the class name in your CSS selector?",
+    addedIdM = "Did you add an `id` to the div? That's not necessary, it already had a class of 'info'.",
+    idSelectorM = "Check your CSS selector- that's not quite how you select based on a class name.",
+    divSelectorM = "That's a really general CSS selector, can you be more specific by selecting based on the class name?",
+    divHasClassM = "Hm, did you remove the 'info' class from the div?";
+
+
+// ------------------------------- STEP 1
+// ======================================
 staticTest($._("Resize the div"), function() {
     var result = null;
     var descrip = $._("This webpage describes the ocean, with an image and a few paragraphs inside a `<*div*>`. In this first step, style the `<*div*>` so that it takes up 70% of the width and is 200px tall.");
@@ -14,27 +26,46 @@ staticTest($._("Resize the div"), function() {
     var divHasClassP = "div.info";
     
     result = cssMatch(addedWidthHeightP);
+    
     if (passes(result)) {
+        
+        // width or height values don't match pattern.
         if (!cssMatches(addedWidthHeightValsP)) {
-            result = fail($._("Is the div 70% wide and 200 pixels tall?"));
+            
+            result = fail($._(widthHeightValsM));
+            
         }
-    } else {
+    } else { // fails
+        
+        // uses a colon after CSS selector
         if (cssMatches(colonAfterInfoP)) {
-            result = fail($._("Hm, why is there a colon after the class name in your CSS selector?"));
+            result = fail($._(colonAfterInfoM));
+            
+        // adds id to the div
         } else if (htmlMatches(addedIdP)) {
-            result = fail($._("Did you add an `id` to the div? That's not necessary, it already had a class of 'info'."));
+            result = fail($._(addedIdM));
+
+        // selects using id selector
         } else if (cssMatches(idSelectorP)) {
-            result = fail($._("Check your CSS selector- that's not quite how you select based on a class name."));
+            result = fail($._(idSelectorM));
+            
+        // selects using 'div' element selector
         } else if (cssMatches(divSelectorP)) {
-            result = fail($._("That's a really general CSS selector, can you be more specific by selecting based on the class name?"));
+            result = fail($._(divSelectorM));
         }
     }
+    
+    // If pass OR fail
+    // If class 'info' removed from div
     if (!htmlMatches(divHasClassP)) {
-        result = fail($._("Hm, did you remove the 'info' class from the div?"));
+        result = fail($._(divHasClassM));
     } 
     assertMatch(result, descrip, displayP);
 });
 
+
+// ------------------------------- STEP 2
+// ======================================
 staticTest($._("Make it scroll"), function() {
     var result = null;
     var descrip = $._("Now, make it so the div cuts off the overflowing text and presents a scrollbar instead.");
@@ -57,6 +88,9 @@ staticTest($._("Make it scroll"), function() {
     assertMatch(result, descrip, displayP);
 });
 
+
+// ------------------------------- STEP 3
+// ======================================
 staticTest($._("Resize the img"), function() {
     var result = null;
     var descrip = $._("In this second step, resize the image so that it takes up the same width as the text.");
