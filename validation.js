@@ -16,7 +16,8 @@ var usedScrollValueM = "It's better to use the `auto` value, because then it wil
 var addedWidthValsM = "Is the image 70% wide, like the div?",
     addedIdPicM = "Did you add an `id` to the image? That's not necessary, it already had a class of 'pic'.",
     imgSelectorM = "That's a really general CSS selector, can you be more specific by selecting based on the class name?",
-    addedWidthAttrM = "You should be using a CSS rule to style the size of the image, not a “`width`” HTML attribute. Can you remove that attribute from your <`img`> tag, and write a CSS rule insead?"
+    addedWidthAttrM = "You should be using a CSS rule to style the size of the image, not a “`width`” HTML attribute. Can you remove that attribute from your <`img`> tag, and write a CSS rule insead?",
+    addedHeightAttrM = "You should be using a CSS rule to style the size of the image, not a “`height`” HTML attribute. Can you remove that attribute from your <`img`> tag, and write a CSS rule insead?";
 
 
 
@@ -130,7 +131,8 @@ staticTest($._("Resize the img"), function() {
     var addedWidthValsP = ".pic { width: 70%;}";
     var addedIdP = "img[id]";
     var imgSelectorP = "img { }";
-    var addedWidthAttrP = "img[width]"
+    var addedWidthAttrP = "img[width]";
+    var addedHieghtAttrP = "img[height]";
     
     result = cssMatch(addedWidthP);
     
@@ -151,9 +153,12 @@ staticTest($._("Resize the img"), function() {
             result = fail($._(imgSelectorM));
         
         // uses 'width' attribute inside <img> tag
-        // uses 'img' element selector
         } else if (htmlMatches(addedWidthAttrP)) {
             result = fail($._(addedWidthAttrM));
+            
+        // uses 'height' attribute inside <img> tag
+        } else if (htmlMatches(addedHieghtAttrP)) {
+            result = fail($._(addedHeightAttrM));
         }
     }
     assertMatch(result, descrip, displayP);

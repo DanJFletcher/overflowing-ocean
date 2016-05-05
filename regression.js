@@ -47,6 +47,12 @@
 {   // added width attribute to <img> tag.
     code: "<style> .info { overflow: auto; width: 70%; height: 200px; }</style><img width='70%'><div class='info'></div>",
     steps: ["pass", "pass", "You should be using a CSS rule to style the size of the image, not a “`width`” HTML attribute. Can you remove that attribute from your <`img`> tag, and write a CSS rule insead?"]
+},
+
+
+{   // added height attribute to <img> tag.
+    code: "<style> .info { overflow: auto; width: 70%; height: 200px; }</style><img height='200px'><div class='info'></div>",
+    steps: ["pass", "pass", "You should be using a CSS rule to style the size of the image, not a “`height`” HTML attribute. Can you remove that attribute from your <`img`> tag, and write a CSS rule insead?"]
 }
 
 
