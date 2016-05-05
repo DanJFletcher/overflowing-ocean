@@ -2,7 +2,7 @@
 // ------------ STEP 1
 var widthHeightValsM = "Is the div 70% wide and 200 pixels tall?",
     colonAfterInfoM = "Hm, why is there a colon after the class name in your CSS selector?",
-    addedIdM = "Did you add an `id` to the div? That's not necessary, it already had a class of 'info'.",
+    addedIdInfoM = "Did you add an `id` to the div? That's not necessary, it already had a class of 'info'.",
     idSelectorM = "Check your CSS selector- that's not quite how you select based on a class name.",
     divSelectorM = "That's a really general CSS selector, can you be more specific by selecting based on the class name?",
     divHasClassM = "Hm, did you remove the 'info' class from the div?";
@@ -11,6 +11,18 @@ var widthHeightValsM = "Is the div 70% wide and 200 pixels tall?",
 // ----------- STEP 2
 var usedScrollValueM = "It's better to use the `auto` value, because then it will only show scrollbars when necessary, not all the time.";
 
+
+// ----------- STEP 3
+var addedWidthValsM = "Is the image 70% wide, like the div?",
+    addedIdPicM = "Did you add an `id` to the image? That's not necessary, it already had a class of 'pic'.",
+    imgSelectorM = "That's a really general CSS selector, can you be more specific by selecting based on the class name?";
+
+
+
+
+
+// --------------------------- CHALLENGE STEPS ---------------------------------
+// =============================================================================
 
 
 
@@ -50,7 +62,7 @@ staticTest($._("Resize the div"), function() {
             
         // adds id to the div
         } else if (htmlMatches(addedIdP)) {
-            result = fail($._(addedIdM));
+            result = fail($._(addedIdInfoM));
 
         // selects using id selector
         } else if (cssMatches(idSelectorP)) {
@@ -87,9 +99,13 @@ staticTest($._("Make it scroll"), function() {
     var usedScrollValueP = ".info { overflow: scroll; }";
     var usedScrollValue2P = ".info { overflow-y: scroll; }";
     
+    
+    // [TODO] clean up this block.
     if (cssMatches(addedOverflowP) || cssMatches(addedOverflowYP)) {
         result = pass();
     } else {
+        
+        // Assigns 'scroll' to 'overflow'.
         if (cssMatches(usedScrollValueP) || cssMatches(usedScrollValue2P)) {
             result = fail($._(usedScrollValueM));
         } else {
@@ -114,15 +130,22 @@ staticTest($._("Resize the img"), function() {
     var imgSelectorP = "img { }";
     
     result = cssMatch(addedWidthP);
+    
     if (passes(result)) {
+        
+        // width property value does not match pattern (70%).
         if (!cssMatches(addedWidthValsP)) {
-            result = fail($._("Is the image 70% wide, like the div?"));
+            result = fail($._(addedWidthValsM));
         }
     } else { 
+        
+        // added id to <img> tag.
         if (htmlMatches(addedIdP)) {
-            result = fail($._("Did you add an `id` to the image? That's not necessary, it already had a class of 'pic'."));
+            result = fail($._(addedIdPicM));
+            
+        // uses 'img' element selector
         } else if (cssMatches(imgSelectorP)) {
-            result = fail($._("That's a really general CSS selector, can you be more specific by selecting based on the class name?"));
+            result = fail($._(imgSelectorM));
         }
     }
     assertMatch(result, descrip, displayP);
