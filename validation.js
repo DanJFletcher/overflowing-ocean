@@ -41,7 +41,7 @@ staticTest($._("Resize the div"), function() {
     
     var addedWidthHeightValsP = ".info { width: 70%; height: 200px; }";
     
-    var idSelectorP = "# {}";
+    var idSelectorP = "#info {}";
     var colonAfterInfoP  = ".info: {}";
     var addedIdP = "div[id]";
     var divSelectorP = "div {}";
@@ -105,24 +105,25 @@ staticTest($._("Make it scroll"), function() {
     
     var addedOverflowP = ".info { overflow: auto; }";
     var addedOverflowYP = ".info { overflow-y: auto; }";
+    var addedOverflowXP = ".info { overflow-x: auto; }";
     var usedScrollValueP = ".info { overflow: scroll; }";
     var usedScrollValue2P = ".info { overflow-y: scroll; }";
     
     
     
     // [TODO] clean up this block.
-    if (cssMatches(addedOverflowP) || cssMatches(addedOverflowYP)) {
-        result = pass();
-    } else {
+    result = anyPass(cssMatch(addedOverflowP), cssMatch(addedOverflowYP), cssMatch(addedOverflowXP));
+    
+    if (!passes(result)) {
         
         // Assigns 'scroll' to 'overflow'.
         if (cssMatches(usedScrollValueP) || cssMatches(usedScrollValue2P)) {
             result = fail($._(usedScrollValueM));
-        } else {
-            result = fail();
-        }
+        } 
     }
+    
     assertMatch(result, descrip, displayP);
+    
 });
 
 

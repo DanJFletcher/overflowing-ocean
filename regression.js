@@ -1,4 +1,11 @@
-[{
+[
+    // [TODO] clean up regression tests.
+{   
+    code: "<style>.info { width: 70%; height: 200px; }</style><div class='info'></div>",
+    steps: ["pass"]
+},    
+    
+{
     code: "<style>.info { width: 60%; height: 100px; }</style><div class='info'></div>",
     steps: ["Is the div 70% wide and 200 pixels tall?"]
 },{
@@ -12,10 +19,7 @@
     code: "<style>div { width: 70%; height: 200px; }</style><div class='info'></div>",
     steps: ["That's a really general CSS selector, can you be more specific by selecting based on the class name?"]
 },
-{
-    code: "<style>.info { width: 70%; height: 200px; }</style><div class='info'></div>",
-    steps: ["pass"]
-},
+
 {
     code: "<style>#info { width: 70%; height: 200px; }</style><div id='info' class='info'></div>",
     steps: ["Did you add an `id` to the div? That's not necessary, it already had a class of 'info'."]
@@ -25,7 +29,8 @@
     steps: ["Hm, why is there a colon after the class name in your CSS selector?"]
 },
 
-{
+
+{   // creates a css rule for the 'pic' class.
     code: "<style>.info {} .pic {}</style><div class='info'></div>",
     steps: ["For this step, you should style the div with a class of '`info`' - not the image."]
 },
