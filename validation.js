@@ -131,7 +131,7 @@ staticTest($._("Make it scroll"), function() {
 
 staticTest($._("Resize the img"), function() {
     var result = null;
-    var descrip = $._("In this second step, resize the image so that it takes up the same width as the text.");
+    var descrip = $._("In this last step, write a CSS rule for the ‘pic’ class that resizes the image to take up the same width as the text.");
     var displayP = "";
     
     var addedWidthP = ".pic { width: $w;}";
