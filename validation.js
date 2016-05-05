@@ -5,7 +5,8 @@ var widthHeightValsM = "Is the div 70% wide and 200 pixels tall?",
     addedIdInfoM = "Did you add an `id` to the div? That's not necessary, it already had a class of 'info'.",
     idSelectorM = "Check your CSS selector- that's not quite how you select based on a class name.",
     divSelectorM = "That's a really general CSS selector, can you be more specific by selecting based on the class name?",
-    divHasClassM = "Hm, did you remove the 'info' class from the div?";
+    divHasClassM = "Hm, did you remove the 'info' class from the div?",
+    addedPicSelectorM = "For this step, you should style the div with a class of '`info`' - not the image.";
     
     
 // ----------- STEP 2
@@ -45,6 +46,7 @@ staticTest($._("Resize the div"), function() {
     var addedIdP = "div[id]";
     var divSelectorP = "div {}";
     var divHasClassP = "div.info";
+    var addedPicSelectorP = ".pic {}";
     
     result = cssMatch(addedWidthHeightP);
     
@@ -73,6 +75,11 @@ staticTest($._("Resize the div"), function() {
         // selects using 'div' element selector
         } else if (cssMatches(divSelectorP)) {
             result = fail($._(divSelectorM));
+        
+        
+        // added a rule for the "pic" class
+        } else if (cssMatches(addedPicSelectorP)) {
+            result = fail($._(addedPicSelectorM));
         }
     }
     
