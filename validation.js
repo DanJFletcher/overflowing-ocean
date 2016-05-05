@@ -34,14 +34,14 @@ var addedWidthValsM = "Is the image 70% wide, like the div?",
 
 staticTest($._("Resize the div"), function() {
     var result = null;
-    var descrip = $._("This webpage describes the ocean, with an image and a few paragraphs inside a `<*div*>`. In this first step, style the `<*div*>` so that it takes up 70% of the width and is 200px tall.");
+    var descrip = $._("This webpage describes the ocean, with an image and a few paragraphs which are inside a <`div`>.\n\n In this first step, style the <`div`> that has a class of '`info`', so that it takes up 70% of the width, and is 200px tall.");
     var displayP = "";
     
     var addedWidthHeightP = ".info { width: $w; height: $h; }";
     
     var addedWidthHeightValsP = ".info { width: 70%; height: 200px; }";
     
-    var idSelectorP = "#info {}";
+    var idSelectorP = "# {}";
     var colonAfterInfoP  = ".info: {}";
     var addedIdP = "div[id]";
     var divSelectorP = "div {}";
